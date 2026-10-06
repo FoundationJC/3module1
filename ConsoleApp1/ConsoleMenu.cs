@@ -168,10 +168,29 @@ namespace OopLab.ConsoleApp
             foreach (Person p in _persons)
                 if (p is ISkill)
                 {
+                    try
+                    {
+                        string product = BigMath.Multiply(a!, b!);
+                        Console.WriteLine($"{p.FirstName} {p.LastName}: {a} × {b} = {product}");
+                    }
+                    catch (FormatException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+
                     Console.WriteLine($"{p.FirstName} {p.LastName}: {x} × {y} = {x * y}");
                     return;
+
+
+
                 }
             Console.WriteLine("Немає осіб із таким вмінням.");
+
+
         }
+
+
     }
+
 }

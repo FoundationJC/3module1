@@ -11,6 +11,13 @@ namespace OopLab.Domain
     {
         public static string Multiply(string a, string b)
         {
+            if (string.IsNullOrWhiteSpace(a) || string.IsNullOrWhiteSpace(b)
+
+        || !a.All(char.IsDigit) || !b.All(char.IsDigit))
+                throw new FormatException("Числа мають містити лише цифри.");
+
+
+
             int[] result = new int[a.Length + b.Length];
             for (int i = a.Length - 1; i >= 0; i--)
                 for (int j = b.Length - 1; j >= 0; j--)
@@ -31,6 +38,9 @@ namespace OopLab.Domain
                 sb.Append(digit);
             }
             return sb.Length == 0 ? "0" : sb.ToString();
+
+
+
         }
     }
 }
